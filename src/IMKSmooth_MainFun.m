@@ -155,7 +155,7 @@ Umax_neg_j=Umax_neg_j_1;
 
     if Reversal_Flag==1
 		Rintrsct_K=Rreversal-Mreversal/K_j_1;
-        Energy_Rev=Energy_total-Energy_Excrsni_1+0.5*Mreversal*(Rintrsct_K-Rreversal); % total energy dissipated right before this drift reversal (minus the elastic energy)
+        Energy_Rev=max(0,Energy_total-Energy_Excrsni_1+0.5*Mreversal*(Rintrsct_K-Rreversal)); % total energy dissipated right before this drift reversal (minus the elastic energy)
         % Update Loading/Unloading Stiffness
 		beta_K_j   =(Energy_Rev/(2*Ref_Energy_K-Energy_total+0.5*Mreversal*(Rintrsct_K-Rreversal)))^c_K;
         K_j=K_j_1*(1-beta_K_j);
@@ -165,13 +165,13 @@ Umax_neg_j=Umax_neg_j_1;
         % Update Paramters for Smooth Transition Option
 		beta_F_j   =(Energy_Rev/(2*Ref_Energy_F-Energy_total+0.5*Mreversal*(Rintrsct_K-Rreversal)))^c_F;
 		if Di>0
-			beta_Sx = ((Energy_Rev + 0.5*Mreversal* (Rintrsct_K - Rreversal)) / (Ref_Energy_S - Energy_total))^ c_S;
+            beta_Sx = (max(0,(Energy_Rev + 0.5*Mreversal* (Rintrsct_K - Rreversal)))/ (Ref_Energy_S - Energy_total))^ c_S;
 			Kp_x = Kp_pos_j_1   * (1.0 - beta_Sx * D_pos);
 			Fy_x = Fy_pos_j_1 	* (1.0 - beta_Sx * D_pos);
 			Uy_x = Fy_x / K_j;
 			FyProject_x = Fy_x - Kp_x * Uy_x;
         else
-			beta_Sx = ((Energy_Rev + 0.5*Mreversal * (Rintrsct_K - Rreversal)) / (Ref_Energy_S - Energy_total))^ c_S;
+            beta_Sx = (max(0,(Energy_Rev + 0.5*Mreversal* (Rintrsct_K - Rreversal)))/ (Ref_Energy_S - Energy_total))^ c_S;
 			Kp_x = Kp_neg_j_1   * (1.0 - beta_Sx * D_neg);
 			Fy_x = Fy_neg_j_1 	* (1.0 - beta_Sx * D_neg);
 			Uy_x = Fy_x / K_j;
@@ -447,7 +447,7 @@ if Mi_boundary_Neg<Mi_boundary_Neg1; Mi_boundary_Neg=Mi_boundary_Neg1; end
     Energy_total=Energy_total+(Mi+Mi_1)*0.5*(Ri-Ri_1); % total energy dissipated till current incremental step
     
     if Mi/Mi_1<0
-        Energy_Excrsn=Energy_total-Energy_Excrsni_1;  % total energy dissipated in current excursion
+        Energy_Excrsn=max(0,Energy_total-Energy_Excrsni_1);  % total energy dissipated in current excursion
         Energy_Excrsni_1=Energy_total;      		  % total energy dissipated in previous excursion
         Excursion_Flag=1;
     else
