@@ -3,5 +3,5 @@ IIDAP is a standalone MATLAB-based software capable of performing a variety of d
 
 Tutorial videos: https://www.youtube.com/playlist?list=PLz_XdUL-6Y_lqvBanzTFuFNB9K3xDzXAi
 
-# Cite:
+# Citation
 Elkady, A. and Lignos, D.G. (2019). "II-DAP: Interactive Interface for Dynamic Analysis Procedures" Version 1.3.0. Zenodo. http://doi.org/10.5281/zenodo.3405558
