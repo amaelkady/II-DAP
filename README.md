@@ -11,7 +11,7 @@ Tutorial videos can be found at this YouTube [playlist](https://www.youtube.com/
 
 --> Last update: 15 December 2024
 
-# NEW: II-DAP is now also available through an [online app](https://amaelkady.github.io/iidap/index.html.html)
+# NEW: II-DAP is now also available through an [online app](https://amaelkady.github.io/iidap/index.html)
 
 ## Citation
 Elkady, A. and Lignos, D.G. (2019). "II-DAP: Interactive Interface for Dynamic Analysis Procedures" Version 1.3.0. Zenodo. http://doi.org/10.5281/zenodo.3405558
